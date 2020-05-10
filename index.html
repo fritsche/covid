@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1><span id="covid-title">CORONAVÍRUS</span> <span id="slash-title">//</span> <span
+                id="state-title">PARANÁ</span></h1>
+    </header>
+    <main>
+        <div class="plot-area">
+            <canvas id="canvas-brazil">
+                Your browser does not support the HTML canvas tag.
+            </canvas>
+            <p id="loading-brazil">Loading...</p>
+        </div>
+        <div class="plot-area">
+            <canvas id="canvas-state">
+                Your browser does not support the HTML canvas tag.
+            </canvas>
+            <p id="loading-state">Loading...</p>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="utils.js"></script>
+    <script src="plotBrazil.js"></script>
+    <script src="plotState.js"></script>
+</body>
+
+</html>

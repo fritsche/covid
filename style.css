@@ -1,0 +1,50 @@
+
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+:root {
+    --primary-color: #4e73df;
+    --success-color: #1cc88a;
+    --info-color: #36b9cc;
+    --warning-color: #f6c23e;
+    --danger-color: #e74a3b;
+    --secondary-color: #858796;
+    --secondary-dark-color: #5A5C68;
+    --secondary-light-color: #FFFFFF;
+    --page-background-color: #DDDFEB;
+    --input-background-color: #F8F9FC;
+    --background-color: #F8F9FC;
+    --font-sans-serif: 'Nunito';
+}
+
+main {
+    text-align: center;
+}
+
+body {
+    font-family: var(--font-sans-serif), 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: var(--background-color);
+}
+.plot-area {
+    width: 600px;
+    display: inline-block;
+}
+
+header {
+    border-bottom: solid 1px #333;
+    text-align: center;
+    margin-bottom: 1em;
+    font-weight: bolder;
+}
+
+#covid-title {
+    color: var(--primary-color);
+}
+
+#slash-title {
+    color: var(--success-color);
+}
+
+#state-title {
+    color: var(--info-color);
+}
