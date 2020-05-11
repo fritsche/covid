@@ -1,4 +1,4 @@
-# Dados estaduais do coronavírus
+# Dados estaduais sobre o coronavírus
 
 [https://fritsche.github.io/covid/](https://fritsche.github.io/covid/)
 
