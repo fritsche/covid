@@ -6,7 +6,7 @@ function addToStateDataset(data) {
 }
 
 function plotStateData(state) {
-    plotData('canvas-state', datasetState, state, 'loading-state')
+    plotData('new-cases-state', datasetState, state, 'loading-state')
 }
 
 const urlState = 'https://brasil.io/api/dataset/covid19/caso_full/data/?format=json&place_type=state&state=PR'
