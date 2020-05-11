@@ -13,15 +13,22 @@ function addToDataset(data, dataset) {
 
 function plotData(canvasId, dataset, label, loadingId) {
     const ctx = document.getElementById(canvasId).getContext('2d')
+    
+    const labels = Object.keys(dataset.newCases).reverse()
+    const data = Object.values(dataset.newCases).reverse()
+    // remove the last record (usually the last record is not updated)
+    labels.pop()
+    data.pop()
+    
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Object.keys(dataset.newCases).reverse(),
+            labels: labels,
             datasets: [{
                 label: label,
                 backgroundColor: 'firebrick',
                 borderColor: 'firebrick',
-                data: Object.values(dataset.newCases).reverse(),
+                data: data,
                 fill: false,
             }]
         },
