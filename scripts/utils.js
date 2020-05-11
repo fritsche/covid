@@ -2,12 +2,20 @@
 function addToDataset(data, dataset) {
     if (!dataset.newCases) {
         dataset.newCases = {}
-    } 
+    }
+    if (!dataset.newDeaths) {
+        dataset.newDeaths = {}
+    }
     data.results.forEach(element => {
         if (!dataset.newCases[element.date]) {
             dataset.newCases[element.date] = 0
         }
         dataset.newCases[element.date] += element.new_confirmed
+        
+        if (!dataset.newDeaths[element.date]) {
+            dataset.newDeaths[element.date] = 0
+        }
+        dataset.newDeaths[element.date] += element.new_confirmed
     })
 }
 
@@ -26,8 +34,8 @@ function plotData(canvasId, dataset, label, loadingId) {
             labels: labels,
             datasets: [{
                 label: label,
-                backgroundColor: 'firebrick',
-                borderColor: 'firebrick',
+                backgroundColor: '#f6c23e',
+                borderColor: '#f6c23e',
                 data: data,
                 fill: false,
             }]
