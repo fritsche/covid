@@ -1,10 +1,13 @@
 
 function addToDataset(data, dataset) {
+    if (!dataset.newCases) {
+        dataset.newCases = {}
+    } 
     data.results.forEach(element => {
-        if (!dataset[element.date]) {
-            dataset[element.date] = 0
+        if (!dataset.newCases[element.date]) {
+            dataset.newCases[element.date] = 0
         }
-        dataset[element.date] += element.new_confirmed
+        dataset.newCases[element.date] += element.new_confirmed
     })
 }
 
@@ -13,12 +16,12 @@ function plotData(canvasId, dataset, label, loadingId) {
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Object.keys(dataset).reverse(),
+            labels: Object.keys(dataset.newCases).reverse(),
             datasets: [{
                 label: label,
                 backgroundColor: 'firebrick',
                 borderColor: 'firebrick',
-                data: Object.values(dataset).reverse(),
+                data: Object.values(dataset.newCases).reverse(),
                 fill: false,
             }]
         },
