@@ -14,18 +14,34 @@
                 id="state-title">PARANÁ</span></h1>
     </header>
     <main>
-        <div class="plot-area">
-            <canvas id="new-cases-brazil">
-                Your browser does not support the HTML canvas tag.
-            </canvas>
-            <p id="loading-brazil">Carregando...</p>
-        </div>
-        <div class="plot-area">
-            <canvas id="new-cases-state">
-                Your browser does not support the HTML canvas tag.
-            </canvas>
-            <p id="loading-state">Carregando...</p>
-        </div>
+        <section id="new-cases-section">
+            <div class="plot-area">
+                <canvas id="new-cases-brazil">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-cases-loading-brazil">Carregando...</p>
+            </div>
+            <div class="plot-area">
+                <canvas id="new-cases-state">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-cases-loading-state">Carregando...</p>
+            </div>
+        </section>
+        <section id="new-deaths-section">
+            <div class="plot-area">
+                <canvas id="new-deaths-brazil">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-deaths-loading-brazil">Carregando...</p>
+            </div>
+            <div class="plot-area">
+                <canvas id="new-deaths-state">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-deaths-loading-state">Carregando...</p>
+            </div>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="scripts/utils.js"></script>

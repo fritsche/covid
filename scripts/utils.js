@@ -15,15 +15,15 @@ function addToDataset(data, dataset) {
         if (!dataset.newDeaths[element.date]) {
             dataset.newDeaths[element.date] = 0
         }
-        dataset.newDeaths[element.date] += element.new_confirmed
+        dataset.newDeaths[element.date] += element.new_deaths
     })
 }
 
-function plotData(canvasId, dataset, label, loadingId) {
+function plotData(canvasId, dataset, label, loadingId, field, color) {
     const ctx = document.getElementById(canvasId).getContext('2d')
     
-    const labels = Object.keys(dataset.newCases).reverse()
-    const data = Object.values(dataset.newCases).reverse()
+    const labels = Object.keys(dataset[field]).reverse()
+    const data = Object.values(dataset[field]).reverse()
     // remove the last record (usually the last record is not updated)
     labels.pop()
     data.pop()
@@ -34,8 +34,8 @@ function plotData(canvasId, dataset, label, loadingId) {
             labels: labels,
             datasets: [{
                 label: label,
-                backgroundColor: '#f6c23e',
-                borderColor: '#f6c23e',
+                backgroundColor: color,
+                borderColor: color,
                 data: data,
                 fill: false,
             }]
@@ -46,17 +46,17 @@ function plotData(canvasId, dataset, label, loadingId) {
     document.getElementById(loadingId).style.display = "none"
 }
 
-function getNextData(url, callbackAddToDataset, callbackPlotData, label) {
+function getNextData(url, callbackAddToDataset, callbackPlotData) {
     if (url) { // while has next
         fetch(url).then(response =>
             response.json().then(data => {
                 callbackAddToDataset(data)
-                getNextData(data.next, callbackAddToDataset, callbackPlotData, label)
+                getNextData(data.next, callbackAddToDataset, callbackPlotData)
             })
         ).catch(function (error) {
             console.log('There has been a problem with your fetch operation: ' + error.message)
         })
     } else { // finished loading data
-        callbackPlotData(label)
+        callbackPlotData()
     }
 }
