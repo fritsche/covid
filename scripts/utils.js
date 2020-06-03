@@ -53,6 +53,11 @@ function plotData(canvasId, dataset, label, loadingId, field, color, chart) {
     const data = Object.values(dataset[field]).reverse()
     const average = sevenDaysMovingAverage(data)
 
+    // remove the last record (usually the last record is not updated)
+    labels.pop()
+    data.pop()
+    average.pop()
+
     if (chart) {
         chart.destroy()
     }
@@ -63,7 +68,7 @@ function plotData(canvasId, dataset, label, loadingId, field, color, chart) {
         data: {
             labels: labels,
             datasets: [{
-                label: "Média móvel para " + label,
+                label: "Média móvel para " + label.toLowerCase(),
                 backgroundColor: 'transparent',
                 borderColor: color,
                 data: average,
