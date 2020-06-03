@@ -1,12 +1,14 @@
 let datasetCity = {}
+let chartCityNewCases
+let chartCityNewDeaths
 
 function addToCityDataset(data) {
     addToDataset(data, datasetCity)
 }
 
 function plotCityData() {
-    plotData('new-cases-city', datasetCity, "Novos casos por dia no Paraná", 'new-cases-loading-city', 'newCases', "#f6c23e")
-    plotData('new-deaths-city', datasetCity, "Novos óbitos por dia no Paraná", 'new-deaths-loading-city', 'newDeaths', "#e74a3b")
+    chartCityNewCases = plotData('new-cases-city', datasetCity, "Novos casos por dia no Paraná", 'new-cases-loading-city', 'newCases', "#f6c23e", chartCityNewCases)
+    chartCityNewDeaths = plotData('new-deaths-city', datasetCity, "Novos óbitos por dia no Paraná", 'new-deaths-loading-city', 'newDeaths', "#e74a3b", chartCityNewDeaths)
 }
 
 function fetchAndPlot(city) {

@@ -43,17 +43,22 @@ function moving_average(before, after, numbers) {
 }
 
 function sevenDaysMovingAverage(data) {
-    return moving_average(6, 0, data);
+    return moving_average(3, 3, data);
 }
 
-function plotData(canvasId, dataset, label, loadingId, field, color) {
+function plotData(canvasId, dataset, label, loadingId, field, color, chart) {
     const ctx = document.getElementById(canvasId).getContext('2d')
 
     const labels = Object.keys(dataset[field]).reverse()
     const data = Object.values(dataset[field]).reverse()
     const average = sevenDaysMovingAverage(data)
 
-    const chart = new Chart(ctx, {
+    if (chart) {
+        chart.destroy()
+    }
+    document.getElementById(loadingId).style.display = "inline-block"
+
+    chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
@@ -77,6 +82,8 @@ function plotData(canvasId, dataset, label, loadingId, field, color) {
     })
 
     document.getElementById(loadingId).style.display = "none"
+
+    return chart
 }
 
 function getNextData(url, callbackAddToDataset, callbackPlotData) {
