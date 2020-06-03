@@ -72,7 +72,9 @@ function plotData(canvasId, dataset, label, loadingId, field, color) {
                 fill: false,
             }]
         },
-        options: {}
+        options: {
+            maintainAspectRatio: false,
+        }
     })
 
     document.getElementById(loadingId).style.display = "none"

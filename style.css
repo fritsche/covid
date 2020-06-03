@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-
 :root {
     --primary-color: #4e73df;
     --success-color: #1cc88a;
@@ -9,6 +7,7 @@
     --danger-color: #e74a3b;
     --secondary-color: #858796;
     --secondary-dark-color: #5A5C68;
+    --secondary-darker-color: #172b3e;
     --secondary-light-color: #FFFFFF;
     --page-background-color: #DDDFEB;
     --input-background-color: #F8F9FC;
@@ -17,7 +16,9 @@
 }
 
 main {
-    text-align: center;
+    text-align: left;
+    max-width: fit-content;
+    margin: 0px auto;
 }
 
 body {
@@ -25,9 +26,43 @@ body {
     font-size: 16px;
     background-color: var(--background-color);
 }
+
+section {
+    border: solid 2px var(--secondary-color);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
 .plot-area {
-    width: 600px;
     display: inline-block;
+    position: relative;
+}
+
+@media only screen and (min-width: 1024px) {
+    .plot-area {
+        max-width: calc(512px - 5rem);
+        max-height: calc((512px * 3/4) - 5rem);
+        width: 50%;
+        height: calc(50vw * 3/4);
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .plot-area {
+        max-width: calc(384px - 5rem);
+        max-height: calc((384px * 3/4) - 5rem);
+        width: 50%;
+        height: calc(50vw * 3/4);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .plot-area {
+        width: 100%;
+        height: calc(100vw * 3/4);
+    }
 }
 
 header {
@@ -45,6 +80,11 @@ header {
     color: var(--success-color);
 }
 
-#state-title {
+#title-state {
     color: var(--info-color);
+}
+
+h2 {
+    text-align: left;
+    color: var(--secondary-darker-color);
 }
