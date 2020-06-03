@@ -9,5 +9,12 @@ function plotCityData() {
     plotData('new-deaths-city', datasetCity, "Novos óbitos por dia no Paraná", 'new-deaths-loading-city', 'newDeaths', "#e74a3b")
 }
 
-const urlCity = 'https://brasil.io/api/dataset/covid19/caso_full/data/?format=json&place_type=city&city=Curitiba'
-getNextData(urlCity, addToCityDataset, plotCityData)
+function fetchAndPlot(city) {
+    datasetCity = {}
+    let urlCity = 'https://brasil.io/api/dataset/covid19/caso_full/data/?'
+    urlCity += 'format=json&place_type=city&city=' + city
+    getNextData(urlCity, addToCityDataset, plotCityData)
+}
+
+document.getElementById("city-input").addEventListener("focusout", (e) => fetchAndPlot(e.target.value))
+fetchAndPlot("Curitiba")

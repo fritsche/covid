@@ -1,4 +1,3 @@
-
 function addToDataset(data, dataset) {
     if (!dataset.newCases) {
         dataset.newCases = {}
@@ -28,7 +27,7 @@ function average(numbers) {
 }
 
 function make_window(before, after) {
-    return function (_number, index, array) {
+    return function(_number, index, array) {
         const start = Math.max(0, index - before);
         const end = Math.min(array.length, index + after + 1);
         return _.slice(array, start, end);
@@ -53,18 +52,18 @@ function plotData(canvasId, dataset, label, loadingId, field, color) {
     const labels = Object.keys(dataset[field]).reverse()
     const data = Object.values(dataset[field]).reverse()
     const average = sevenDaysMovingAverage(data)
-    
+
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [{
-                label: "Média móvel para "+label,
+                label: "Média móvel para " + label,
                 backgroundColor: 'transparent',
                 borderColor: color,
                 data: average,
                 fill: false,
-            },{
+            }, {
                 label: label,
                 backgroundColor: 'rgba(127,127,127,0.3)',
                 borderColor: 'transparent',
@@ -87,7 +86,7 @@ function getNextData(url, callbackAddToDataset, callbackPlotData) {
                 callbackAddToDataset(data)
                 getNextData(data.next, callbackAddToDataset, callbackPlotData)
             })
-        ).catch(function (error) {
+        ).catch(function(error) {
             console.log('There has been a problem with your fetch operation: ' + error.message)
         })
     } else { // finished loading data
