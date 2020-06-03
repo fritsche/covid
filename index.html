@@ -10,11 +10,11 @@
 
 <body>
     <header>
-        <h1><span id="covid-title">CORONAVÍRUS</span> <span id="slash-title">//</span> <span
-                id="state-title">PARANÁ</span></h1>
+        <h1><span id="covid-title">CORONAVÍRUS</span> <span id="slash-title">//</span> <span id="title-state">PARANÁ</span></h1>
     </header>
     <main>
-        <section id="new-cases-section">
+        <section id="brazil-section">
+            <h2 id="brasil-title">BRASIL</h2>
             <div class="plot-area">
                 <canvas id="new-cases-brazil">
                     Your browser does not support the HTML canvas tag.
@@ -22,18 +22,21 @@
                 <p id="new-cases-loading-brazil">Carregando...</p>
             </div>
             <div class="plot-area">
-                <canvas id="new-cases-state">
-                    Your browser does not support the HTML canvas tag.
-                </canvas>
-                <p id="new-cases-loading-state">Carregando...</p>
-            </div>
-        </section>
-        <section id="new-deaths-section">
-            <div class="plot-area">
                 <canvas id="new-deaths-brazil">
                     Your browser does not support the HTML canvas tag.
                 </canvas>
                 <p id="new-deaths-loading-brazil">Carregando...</p>
+            </div>
+        </section>
+
+        <section id="state-section">
+
+            <h2 id="state-title">PR</h2>
+            <div class="plot-area">
+                <canvas id="new-cases-state">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-cases-loading-state">Carregando...</p>
             </div>
             <div class="plot-area">
                 <canvas id="new-deaths-state">
@@ -42,12 +45,31 @@
                 <p id="new-deaths-loading-state">Carregando...</p>
             </div>
         </section>
+
+        <section id="city-section">
+            <h2 id="city-title">Curitiba</h2>
+            <div class="plot-area">
+                <canvas id="new-cases-city">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-cases-loading-city">Carregando...</p>
+            </div>
+            <div class="plot-area">
+                <canvas id="new-deaths-city">
+                    Your browser does not support the HTML canvas tag.
+                </canvas>
+                <p id="new-deaths-loading-city">Carregando...</p>
+            </div>
+        </section>
+
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script> <!-- To compute the moving average -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <!-- To compute the moving average -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/plotBrazil.js"></script>
     <script src="scripts/plotState.js"></script>
+    <script src="scripts/plotCity.js"></script>
 </body>
 
 </html>
