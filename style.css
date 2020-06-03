@@ -88,3 +88,18 @@ h2 {
     text-align: left;
     color: var(--secondary-darker-color);
 }
+
+.query-input {
+    font-weight: bold;
+    color: var(--secondary-darker-color);
+    font-size: 24px;
+    font-family: var(--font-sans-serif), 'Roboto', sans-serif;
+    border-radius: 0.3rem;
+    border: 1px solid var(--secondary-color);
+}
+
+.input-div {
+    text-align: left;
+    margin: 1rem 0;
+    padding: 1rem 0;
+}
