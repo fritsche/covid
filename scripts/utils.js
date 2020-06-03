@@ -11,7 +11,7 @@ function addToDataset(data, dataset) {
             dataset.newCases[element.date] = 0
         }
         dataset.newCases[element.date] += element.new_confirmed
-        
+
         if (!dataset.newDeaths[element.date]) {
             dataset.newDeaths[element.date] = 0
         }
@@ -19,23 +19,55 @@ function addToDataset(data, dataset) {
     })
 }
 
+function sum(numbers) {
+    return _.reduce(numbers, (a, b) => a + b, 0);
+}
+
+function average(numbers) {
+    return sum(numbers) / (numbers.length || 1);
+}
+
+function make_window(before, after) {
+    return function (_number, index, array) {
+        const start = Math.max(0, index - before);
+        const end = Math.min(array.length, index + after + 1);
+        return _.slice(array, start, end);
+    }
+}
+
+// https://purelyfunctional.tv/article/moving-average/
+function moving_average(before, after, numbers) {
+    return _.chain(numbers)
+        .map(make_window(before, after))
+        .map(average)
+        .value();
+}
+
+function sevenDaysMovingAverage(data) {
+    return moving_average(6, 0, data);
+}
+
 function plotData(canvasId, dataset, label, loadingId, field, color) {
     const ctx = document.getElementById(canvasId).getContext('2d')
-    
+
     const labels = Object.keys(dataset[field]).reverse()
     const data = Object.values(dataset[field]).reverse()
-    // remove the last record (usually the last record is not updated)
-    labels.pop()
-    data.pop()
+    const average = sevenDaysMovingAverage(data)
     
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [{
-                label: label,
-                backgroundColor: color,
+                label: "Média móvel para "+label,
+                backgroundColor: 'transparent',
                 borderColor: color,
+                data: average,
+                fill: false,
+            },{
+                label: label,
+                backgroundColor: 'rgba(127,127,127,0.3)',
+                borderColor: 'transparent',
                 data: data,
                 fill: false,
             }]
