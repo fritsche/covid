@@ -30,8 +30,9 @@
         </section>
 
         <section id="state-section">
-
-            <h2 id="state-title">PR</h2>
+            <div class="input-div">
+                <input type="text" class="query-input" id="state-input" value="PR">
+            </div>
             <div class="plot-area">
                 <canvas id="new-cases-state">
                     Your browser does not support the HTML canvas tag.
@@ -47,7 +48,9 @@
         </section>
 
         <section id="city-section">
-            <h2 id="city-title">Curitiba</h2>
+            <div class="input-div">
+                <input type="text" class="query-input" id="city-input" value="Curitiba">
+            </div>
             <div class="plot-area">
                 <canvas id="new-cases-city">
                     Your browser does not support the HTML canvas tag.
@@ -63,8 +66,8 @@
         </section>
 
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
     <!-- To compute the moving average -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/plotBrazil.js"></script>
